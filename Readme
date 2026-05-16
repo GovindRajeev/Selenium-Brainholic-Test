@@ -1,0 +1,67 @@
+•	Prerequisites
+Before running the test, ensure your system meets the following requirements:
+🧰 Software Requirements
+1.	Java JDK 11 or higher
+o	Download JDK
+2.	Google Chrome (latest version)
+3.	ChromeDriver
+o	Download from: https://chromedriver.chromium.org/downloads
+4.	TestNG (if using Eclipse)
+o	Open Eclipse → Help → Eclipse Marketplace → search TestNG → install.
+5.	Apache POI JARs (for Excel handling)
+If not using Maven, download manually from https://poi.apache.org/download.html.
+
+•	Project Structure
+├── src
+│   ├── main/java/assesment/Brainholic_/enrichminion_test.java
+│   └── test/java/tests/
+│       ├── TC_01_login.java
+│       ├── TC_02_xllogin.java
+├── testdata/
+│   ├── loginData.xlsx
+│   └── loginReport.xlsx (auto-created)
+├── testng.xml
+├── pom.xml (if Maven project)
+└── README.md
+
+
+•	Running the Selenium Tests
+ Option 1: Run from Eclipse / IntelliJ
+Step-by-step:
+1.	Open Eclipse or IntelliJ IDEA.
+2.	Import the project as a Java Project or Maven Project.
+3.	Make sure your ChromeDriver path is configured properly.
+4.	Open the class you want to run:
+o	TC_01_login.java or
+o	TC_02_xllogin.java
+5.	Right-click inside the file → Run As → TestNG Test
+TestNG will open Chrome, execute steps, and generate a report in the console (and Excel file if applicable).
+ Option 2: Run via Command Prompt (CMD)
+ Step 1 — Navigate to Project Directory
+Code:
+
+cd path\to\your\project
+
+ Step 2 — Compile Java Files
+If you’re not using Maven:
+
+javac -cp "lib/*;src" src\assesment\Brainholic_\enrichminion_test.java
+
+If using Maven:
+
+mvn clean compile
+
+ Step 3 — Run Specific Test via TestNG XML
+To run TC_01_login:
+
+
+mvn test -DsuiteXmlFile=testng_TC01.xml
+
+To run TC_02_xllogin:
+
+mvn test -DsuiteXmlFile=testng_TC02.xml
+•	Viewing the Output
+For TC_02_xllogin, output file:
+
+testdata/loginReport.xlsx
+
